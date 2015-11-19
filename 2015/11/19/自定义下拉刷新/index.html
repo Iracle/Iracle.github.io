@@ -56,12 +56,12 @@
 <meta name="description" content="在iOS项目中下拉刷新是一个非常常用的功能，不管是新闻，电子商务，工具类APP都会用到下拉刷新功能。要实现下拉刷新一般有两种思路。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义下拉刷新">
-<meta property="og:url" content="http://iracleme.com/2015/11/17/自定义下拉刷新/index.html">
+<meta property="og:url" content="http://iracleme.com/2015/11/19/自定义下拉刷新/index.html">
 <meta property="og:site_name" content="Gust">
 <meta property="og:description" content="在iOS项目中下拉刷新是一个非常常用的功能，不管是新闻，电子商务，工具类APP都会用到下拉刷新功能。要实现下拉刷新一般有两种思路。">
 <meta property="og:image" content="http://ac-wz05bqko.clouddn.com/b68b0932306acb8e.png">
 <meta property="og:image" content="http://ac-wz05bqko.clouddn.com/e644acd6d456e377.gif">
-<meta property="og:updated_time" content="2015-11-17T08:40:48.000Z">
+<meta property="og:updated_time" content="2015-11-19T06:57:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义下拉刷新">
 <meta name="twitter:description" content="在iOS项目中下拉刷新是一个非常常用的功能，不管是新闻，电子商务，工具类APP都会用到下拉刷新功能。要实现下拉刷新一般有两种思路。">
@@ -215,8 +215,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-17T16:40:48+08:00" content="2015-11-17">
-              2015-11-17
+            <time itemprop="dateCreated" datetime="2015-11-19T14:57:36+08:00" content="2015-11-19">
+              2015-11-19
             </time>
           </span>
 
@@ -239,17 +239,17 @@
       
 
       
-        <span itemprop="articleBody"><p>在iOS项目中下拉刷新是一个非常常用的功能，不管是新闻，电子商务，工具类APP都会用到下拉刷新功能。要实现下拉刷新一般有两种思路。第一种是用系统自带的<code>UIRefreshControl</code>类，用这种方法优点是简单高效，缺点是样式固定，不灵活；第二种是用第三方的框架，如：<code>MJRefresh</code>等，优点是三方框架功能比较完善，拥有一定的可定制性，缺点是现在的三方框架越来越臃肿，我们在自己的APP中可能只是需要其中的一部分功能，但也要导入整个库，这样进一步增大了我们APP的体积。</p>
+        <span itemprop="articleBody"><p>在 iOS 项目中下拉刷新是一个非常常用的功能，不管是新闻，电子商务，工具类APP都会用到下拉刷新功能。要实现下拉刷新一般有两种思路。第一种是用系统自带的 <code>UIRefreshControl</code> 类，用这种方法优点是简单高效，缺点是样式固定，不灵活；第二种是用第三方的框架，如：<code>MJRefresh</code> 等，优点是三方框架功能比较完善，拥有一定的可定制性，缺点是现在的三方框架越来越臃肿，我们在自己的APP中可能只是需要其中的一部分功能，但也要导入整个库，这样进一步增大了我们APP的体积。</p>
 <p>所以这时候我们可以考虑自己实现下拉刷新。下面我们分三步实现下拉刷新。</p>
-<p><strong>1.先用xib创建一个刷新控件，包括：一个<code>UILabel</code>用来显示刷新文字，一个<code>UIImage</code>来显示刷新图片，一个<code>Activity Indicator</code>来显示刷新状态。</strong></p>
+<p><strong>1.先用xib创建一个刷新控件，包括：一个 <code>UILabel</code> 用来显示刷新文字，一个 <code>UIImage</code> 来显示刷新图片，一个 <code>Activity Indicator</code> 来显示刷新状态。</strong></p>
 <p><img src="http://ac-wz05bqko.clouddn.com/b68b0932306acb8e.png" alt="刷新头XIB"></p>
-<p><strong>2.创建一个继承自<code>UIView</code>的类<code>RefreshHeader</code>,作为刷新控件XIB的容器。然后在接口里面创建一个<code>UIScrollView</code>的属性，用于接收传过来的<code>UITableView</code>对象</strong></p>
+<p><strong>2.创建一个继承自 <code>UIView</code> 的类 <code>RefreshHeader</code> ,作为刷新控件XIB的容器。然后在接口里面创建一个 <code>UIScrollView</code> 的属性，用于接收传过来的 <code>UITableView</code> 对象</strong></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载刷新控件XIB</span></span><br><span class="line">    <span class="built_in">NSArray</span> *array = [[<span class="built_in">NSBundle</span> mainBundle] loadNibNamed:<span class="string">@"RefreshHeaderView"</span> owner:<span class="literal">nil</span> options:<span class="literal">nil</span>];</span><br><span class="line">    <span class="built_in">UIView</span> *headerView = [array firstObject];</span><br><span class="line">    headerView<span class="variable">.frame</span> = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, -<span class="number">45</span>, <span class="built_in">CGRectGetWidth</span>(_scrollView<span class="variable">.bounds</span>), <span class="number">45</span>);</span><br><span class="line">    [_scrollView addSubview:headerView];</span><br><span class="line"></span><br><span class="line"><span class="comment">//把需要下拉刷新的UITabelView通过初始化方法传入RefreshHeader类，使用Block回调刷新事件。</span></span><br><span class="line">    IracleRefreshHeader *headerView = [[IracleRefreshHeader alloc] initWithScrollView:_tableView];</span><br><span class="line">    __<span class="keyword">strong</span> <span class="keyword">typeof</span>(headerView) strongHeaderView = headerView;</span><br><span class="line">    __<span class="keyword">weak</span> <span class="keyword">typeof</span>(<span class="keyword">self</span>) weakSelf = <span class="keyword">self</span>;</span><br><span class="line">    headerView<span class="variable">.RefreshBlock</span> = ^()&#123;</span><br><span class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">2</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;        </span><br><span class="line">            [weakSelf loadNewData];</span><br><span class="line">            [strongHeaderView endRefreshing];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>3.最后在<code>RefreshHeader</code>类使用KVO监听传入的<code>UIScrollView</code>的<code>contentOffset</code>属性，当<code>contentOffset</code>的值改变时，就会触发下面方法。根据<code>contentOffset.y</code>来改变刷新控件的状态</strong></p>
+<p><strong>3.最后在 <code>RefreshHeader</code> 类使用KVO监听传入的 <code>UIScrollView</code> 的      <code>contentOffset</code> 属性，当 <code>contentOffset</code> 的值改变时，就会触发下面方法。根据 <code>contentOffset.y</code> 来改变刷新控件的状态</strong></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath ofObject:(<span class="keyword">id</span>)object change:(<span class="built_in">NSDictionary</span> *)change context:(<span class="keyword">void</span> *)context</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_scrollView<span class="variable">.dragging</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> currentPostion = _scrollView<span class="variable">.contentOffset</span><span class="variable">.y</span>;</span><br><span class="line">        <span class="keyword">if</span> (!_isRefresh) &#123;</span><br><span class="line">            [<span class="built_in">UIView</span> animateWithDuration:<span class="number">0.3</span> animations:^&#123;</span><br><span class="line">                <span class="keyword">if</span> (currentPostion &lt; - HeaderHeight * <span class="number">1.5</span>) &#123;</span><br><span class="line">                    _headerLabel<span class="variable">.text</span> = PoosenWillRefresh;</span><br><span class="line">                    _imageView<span class="variable">.transform</span> = <span class="built_in">CGAffineTransformMakeRotation</span>(M_PI);                    </span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    _headerLabel<span class="variable">.text</span>= PullDownRefresh;</span><br><span class="line">                    _imageView<span class="variable">.transform</span> = <span class="built_in">CGAffineTransformMakeRotation</span>(M_PI * <span class="number">2</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">        <span class="keyword">if</span> ([_headerLabel<span class="variable">.text</span> isEqualToString:PoosenWillRefresh]) &#123;</span><br><span class="line">            [<span class="keyword">self</span> beginRefreshing];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>好了，我们来看一下效果：</p>
 <p><img src="http://ac-wz05bqko.clouddn.com/e644acd6d456e377.gif" alt="pullrefresh gif 图片"></p>
-<p>当完成上面的步骤后我们就实现了自己的自定义下拉刷新方法，整个类不到100行代码，相对于第三方框架而言就非常轻盈，而且对于后期扩展拥有更大的灵活性。</p>
+<p>当完成上面的步骤后我们就实现了自己的自定义下拉刷新方法，整个类不到 100 行代码，相对于第三方框架而言就非常轻盈，而且对于后期扩展拥有更大的灵活性。</p>
 </span>
       
     </div>
@@ -261,17 +261,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/13/hello-world/" rel="next" title="Stay Hungry, Stay Foolish">
-                <i class="fa fa-chevron-left"></i> Stay Hungry, Stay Foolish
+              <a href="/2015/11/17/使用-3D-Touch-让你的-APP-锦上添花/" rel="next" title="使用 3D Touch 让你的 APP 锦上添花 ">
+                <i class="fa fa-chevron-left"></i> 使用 3D Touch 让你的 APP 锦上添花 
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/17/使用-3D-Touch-让你的-APP-锦上添花/" rel="prev" title="使用 3D Touch 让你的 APP 锦上添花 ">
-                使用 3D Touch 让你的 APP 锦上添花  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
