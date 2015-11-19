@@ -281,6 +281,202 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/17/使用-3D-Touch-让你的-APP-锦上添花/" itemprop="url">
+                  使用 3D Touch 让你的 APP 锦上添花 
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-17T19:56:15+08:00" content="2015-11-17">
+              2015-11-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ai/" itemprop="url" rel="index">
+                    <span itemprop="name">ai</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h3 id="简介">简介</h3><p>3D Touch 是苹果在 iPhone6s/pluse 上引入的一种全新的交互方式。这也许是手机交互发展史上继苹果 2007 年在 WWDC 上发布第一代 iPhone 之后最大的革新了。当时苹果抛弃传统的全键盘手机，发布了一款带有电容式触摸屏支持多点触控的全触屏手机 iPhone。自此，全触屏手机席卷全球，到现在我们都还处于全触屏手机的风潮中，你很难再去买一块带键盘的手机了（而那些想要同时兼顾键盘和触屏的手机厂商已经死了。对，我就是在黑诺基亚，我不是人）。多点触控是全触屏手机能够流行的一大基石，用户很方便通过 pinch 来缩放一张图片，我在 5 年前第一次在 iTouch（当时买不起 iPhone ）上放大一张图片那种操作快感带给我的喜悦我至今都记得。但在手机上无论是 pinch 还是滑动操作都是在一个二维平面上发生的，直到 iPhone6s/pluse 的到来。新一代 iPhone 可以感知我们的压力，并且根据压力的不同给用户不用的反馈，其原理是在液晶屏的下面增加了一块压力传感器。相信我，如果你有体验过 iPhone 的 3D Touch 你一定会爱上她的，反正用了一个月 6s 后我已经离不开她了。</p>
+<p>除了苹果自家的应用已经支持 3D Touch 之外，苹果也开放了以下 3D Touch API。</p>
+<ul>
+<li>Home Screen quick action</li>
+<li>UIKit peek and pop</li>
+<li>Web view peek and pop</li>
+<li>UITouch force properties</li>
+</ul>
+<p>使用这些 API 可以让我们的 APP 在交互上更上一层楼！</p>
+<h3 id="Home_Screen_quick_action">Home Screen quick action</h3><p>通过此 API 可以给应用程序的启动图标加上快速选项，用户可以通过快速选项菜单定位响应的功能。ios9 为我们提供了两种屏幕标签，Static quick actions 和 Dynamic quick actions。</p>
+<p><strong>Static quick actions</strong> 是在应用的 Info.plist 文件的 UIApplicationShortcutItems 数组中定义 静态快速选项。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItems<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">array</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItemIconType<span class="tag">&lt;/<span class="title">key</span>&gt;</span> 标签Icon类型</span><br><span class="line">			<span class="tag">&lt;<span class="title">string</span>&gt;</span>UIApplicationShortcutIconTypeLove<span class="tag">&lt;/<span class="title">string</span>&gt;</span> </span><br><span class="line">			<span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItemTitle<span class="tag">&lt;/<span class="title">key</span>&gt;</span> 设置标签的标题</span><br><span class="line">			<span class="tag">&lt;<span class="title">string</span>&gt;</span>今日新闻<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItemType<span class="tag">&lt;/<span class="title">key</span>&gt;</span> 快捷通道类型的字符串，用于标识这个 acrion</span><br><span class="line">			<span class="tag">&lt;<span class="title">string</span>&gt;</span>news<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItemIconType<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">string</span>&gt;</span>UIApplicationShortcutIconTypeFavorite<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItemTitle<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">string</span>&gt;</span>打开收藏<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">key</span>&gt;</span>UIApplicationShortcutItemType<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">string</span>&gt;</span>favorite<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">array</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在 Info.plist 添加完以上 UIApplicationShortcutItems 数组之后，在真机上运行程序，我们就可以看到如下效果：</p>
+<p><img src="http://ac-wz05bqko.clouddn.com/5554a089053e18b1.jpg" alt="s"></p>
+<p><strong>Dynamic quick actions</strong></p>
+<p>动态标签是通过代码动态的添加应用程序图标快速选项，下面是上图效果用代码的实现：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打开收藏</span></span><br><span class="line"><span class="keyword">let</span> iconFavorite = <span class="type">UIApplicationShortcutIcon</span>(type: .<span class="type">Favorite</span>)</span><br><span class="line"><span class="keyword">let</span> itemFavorite = <span class="type">UIMutableApplicationShortcutItem</span>(type: <span class="string">"favorite"</span>, localizedTitle: <span class="string">"打开收藏"</span>)</span><br><span class="line">itemFavorite.icon = iconFavorite</span><br><span class="line"><span class="comment">//今日新闻</span></span><br><span class="line"><span class="keyword">let</span> iconNews = <span class="type">UIApplicationShortcutIcon</span>(type: .<span class="type">Love</span>)</span><br><span class="line"><span class="keyword">let</span> itemNews = <span class="type">UIMutableApplicationShortcutItem</span>(type: <span class="string">"news"</span>, localizedTitle: <span class="string">"今日新闻"</span>)</span><br><span class="line">itemNews.icon = iconNews</span><br><span class="line">application.shortcutItems = [itemNews, itemFavorite]</span><br></pre></td></tr></table></figure>
+<p><strong>响应标签行为</strong></p>
+<p>我们点击标签进入程序的时候也可以响应事件，通过在 AppDelegate 里面添加下面方法来获取，可以通过获取上面定义的  <code>UIMutableApplicationShortcutItem</code>  type 来判断点击的是哪个标签：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">application</span><span class="params">(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: <span class="params">(Bool)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> shortcutItem.type == <span class="string">"favorite"</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> alert = <span class="type">UIAlertController</span>(title: <span class="string">"提示"</span>, message: <span class="string">"我的收藏"</span>, preferredStyle: <span class="type">UIAlertControllerStyle</span>.<span class="type">Alert</span>)</span><br><span class="line">            alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"确定"</span>, style: <span class="type">UIAlertActionStyle</span>.<span class="type">Cancel</span>, handler: <span class="literal">nil</span>))</span><br><span class="line">            window?.rootViewController?.presentViewController(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> shortcutItem.type == <span class="string">"news"</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> alert = <span class="type">UIAlertController</span>(title: <span class="string">"提示"</span>, message: <span class="string">"最热新闻"</span>, preferredStyle: <span class="type">UIAlertControllerStyle</span>.<span class="type">Alert</span>)</span><br><span class="line">            alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"确定"</span>, style: <span class="type">UIAlertActionStyle</span>.<span class="type">Cancel</span>, handler: <span class="literal">nil</span>))</span><br><span class="line">            window?.rootViewController?.presentViewController(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="UIKit_peek_and_pop">UIKit peek and pop</h3>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/13/hello-world/" itemprop="url">
+                  Stay Hungry, Stay Foolish
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-07-13T20:46:25+08:00" content="2015-07-13">
+              2015-07-13
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="description">I am honored to be with you today at your commencement from one of the finest universities in the world. I never graduated from college.</span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/13/hello-world/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
