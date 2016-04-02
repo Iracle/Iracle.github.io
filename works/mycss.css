@@ -1,0 +1,15 @@
+.center {
+	text-align: center;
+
+}
+
+p.center {
+	background-color: green;
+	font-family: Impact;
+}
+
+p.emd {
+	text-indent: 10px;
+
+}
+
