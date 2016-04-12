@@ -57,28 +57,18 @@
 
 
 
-	hello world
+hello world
 
 
-
-I&apos;m not a person
-
-I&apos;m statement one
-I&apos;m statement two
-
-
-
-Baidu
-
-
-
-
-&amp;lt;!-- 这是注释 --&amp;gt;
-
-
-
-
-This paragraph will also be center-aligned.">
+	window.onload = function(){
+	
+		var images = document.getElementsByTagName(&apos;img&apos;);
+		var pos = 0;
+		var len = 5;
+		
+		setInterval(function(){
+		
+			images[pos].style.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Iracle">
 <meta property="og:url" content="http://iracleme.com/works/index.html">
@@ -87,58 +77,43 @@ This paragraph will also be center-aligned.">
 
 
 
-	hello world
+hello world
 
 
-
-I&apos;m not a person
-
-I&apos;m statement one
-I&apos;m statement two
-
-
-
-Baidu
-
-
-
-
-&amp;lt;!-- 这是注释 --&amp;gt;
-
-
-
-
-This paragraph will also be center-aligned.">
-<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/43f42f56b6f346d9.JPG">
-<meta property="og:updated_time" content="2016-04-02T09:10:23.000Z">
+	window.onload = function(){
+	
+		var images = document.getElementsByTagName(&apos;img&apos;);
+		var pos = 0;
+		var len = 5;
+		
+		setInterval(function(){
+		
+			images[pos].style.">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/d68b997dddc78b53.png">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/84496a972fc86258.png">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/0ed81e6e99bcbe3d.png">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/a731c0cfd06eaea2.png">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/cf5063faf2f7701e.png">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/7cacbb3518dbd074.png">
+<meta property="og:updated_time" content="2016-04-12T16:13:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Iracle">
 <meta name="twitter:description" content="&amp;lt;!DOCTYPE html&amp;gt;
 
 
 
-	hello world
+hello world
 
 
-
-I&apos;m not a person
-
-I&apos;m statement one
-I&apos;m statement two
-
-
-
-Baidu
-
-
-
-
-&amp;lt;!-- 这是注释 --&amp;gt;
-
-
-
-
-This paragraph will also be center-aligned.">
+	window.onload = function(){
+	
+		var images = document.getElementsByTagName(&apos;img&apos;);
+		var pos = 0;
+		var len = 5;
+		
+		setInterval(function(){
+		
+			images[pos].style.">
 
 
 
@@ -262,29 +237,52 @@ This paragraph will also be center-aligned.">
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="mycss.css">
-	<title>hello world</title>
+<title>hello world</title>
+
+<script>
+	window.onload = function(){
+	
+		var images = document.getElementsByTagName('img');
+		var pos = 0;
+		var len = 5;
+		
+		setInterval(function(){
+		
+			images[pos].style.display = 'none';
+			pos = ++pos == len ? 0 : pos;
+			images[pos].style.display = 'inline';
+		
+		},2000);
+		
+	};
+</script>
+
 </head>
 <body>
 
-<h3>I'm not a person</h3>
+<div id="tab">
 
-<p>I'm statement one</p>
-<p class="emd">I'm statement two</p>
+	<img src="http://ac-wz05bqko.clouddn.com/d68b997dddc78b53.png" width="550" height="1138">
+	<img src="http://ac-wz05bqko.clouddn.com/84496a972fc86258.png" width="550" height="1138">
+	<img src="http://ac-wz05bqko.clouddn.com/0ed81e6e99bcbe3d.png" width="550" height="1138">
+	<img src="http://ac-wz05bqko.clouddn.com/a731c0cfd06eaea2.png" width="550" height="1138">
+	<img src="http://ac-wz05bqko.clouddn.com/cf5063faf2f7701e.png" width="550" height="1138">
 
-<br>
+</div>
 
-<a href="http://www.baidu.com" target="_blank" rel="external">Baidu</a>
-<br>
-<br>
+<div id="icon">
 
-<img src="http://ac-wz05bqko.clouddn.com/43f42f56b6f346d9.JPG" width="300" height="390">
-<!-- 这是注释 -->
+    <img src="http://ac-wz05bqko.clouddn.com/7cacbb3518dbd074.png" width="80" height="80">
 
-<hr>
+ </div>
 
-<p class="center">
-This paragraph will also be center-aligned.
-</p>
+ <div id="gust">
+ 	<p>Gust Browser</p>
+ </div>
+
+  <div id="slogan">
+ 	<p>The White Garden Of Sinners</p>
+ </div>
 
 </body>
 </html>
