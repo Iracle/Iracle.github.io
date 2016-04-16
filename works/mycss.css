@@ -133,10 +133,10 @@ body {
 
 #introducebg {
 	position:absolute;
-	background-color: #aaffbb;
+	background-color: white;
     width: auto;
     bottom: 0px;
-    top: 70%;
+    top: 72%;
     left: 0px;
     right: 0px;
 }
@@ -149,8 +149,8 @@ body {
 	max-height: 15%;
 	width: auto;
 	height: auto;
-	font-weight: 200;
-    font-size: 3.5vw; color:#2f97ff;font-family:Sans-serif,Arial,Helvetica;
+	font-weight: 100;
+    font-size: 3.0vw; color:rgba(39, 129, 255,0.68);font-family:Sans-serif,Arial,Helvetica;
 
 
 }
@@ -163,8 +163,8 @@ body {
 	max-height: 15%;
 	width: auto;
 	height: auto;
-	font-weight: 200;
-    font-size: 3.5vw; color:#2f97ff;font-family:Sans-serif,Arial,Helvetica;
+	font-weight: 100;
+    font-size: 3.0vw; color:rgba(39, 129, 255,0.68);font-family:Sans-serif,Arial,Helvetica;
 
 
 }
@@ -178,8 +178,8 @@ body {
 	max-height: 15%;
 	width: auto;
 	height: auto;
-	font-weight: 200;
-    font-size: 3.5vw; color:#2f97ff;font-family:Sans-serif,Arial,Helvetica;
+	font-weight: 100;
+    font-size: 3.0vw; color:rgba(39, 129, 255,0.68);font-family:Sans-serif,Arial,Helvetica;
 
 
 }
@@ -187,14 +187,14 @@ body {
 #interactiveInfo {
 	position:absolute;
 	text-align: center;
-	left: 9%;
+	left: 8.5%;
 	top: 35%;
 	max-width: 50%;
 	max-height: 15%;
 	width: auto;
 	height: auto;
 	font-weight: 200;
-    font-size: 1.5vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
+    font-size: 1.4vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
 
 
 }
@@ -203,14 +203,14 @@ body {
 
 	position:absolute;
 	text-align: center;
-	left: 39%;
+	left: 37.5%;
 	top: 35%;
 	max-width: 50%;
 	max-height: 15%;
 	width: auto;
 	height: auto;
 	font-weight: 200;
-    font-size: 1.5vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
+    font-size: 1.4vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
 
 
 }
@@ -219,14 +219,14 @@ body {
 
 	position:absolute;
 	text-align: center;
-	left: 68%;
+	left: 67%;
 	top: 35%;
 	max-width: 50%;
 	max-height: 15%;
 	width: auto;
 	height: auto;
 	font-weight: 200;
-    font-size: 1.5vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
+    font-size: 1.4vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
 
 
 }
