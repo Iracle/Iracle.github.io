@@ -9,7 +9,6 @@ body {
     width: auto;
     height: 660px;
     text-align: right;
-    /*border: 1px solid #ccc;*/
 }
 
 #tab img {
@@ -30,13 +29,12 @@ body {
 	width: auto;
     height: 0px;
     text-align: left;
-	/*border: 1px solid #cc5e56;*/
-
 }
 
 #icon img {
 	position:absolute;
 	left: 15%;
+	float: center;
 	top: 27%;
 	max-width: 8%;
 	max-height: 8%;
@@ -106,8 +104,6 @@ body {
 	max-height: 14%;
 	width: auto;
 	height: auto;
-
-
 }
 
 
@@ -228,6 +224,79 @@ body {
 	font-weight: 200;
     font-size: 1.4vw; color:#6f6e70;font-family:Sans-serif,Arial,Helvetica;
 
+}
+
+@media only screen and (max-width: 650px) {
+
+	#tab {
+    width: auto;
+    height: 530px;
+    text-align: right;
+}
+
+	#tab img {
+	position:absolute;
+	right: 20%;
+	max-width: 60%;
+	max-height: 60%;
+	width: auto;
+	height: auto;
+
+}
+
+	#icon img {
+	position:absolute;
+	text-align: center;
+	left: 17%;
+	top: 72%;
+	max-width: 17%;
+	max-height: 17%;
+	width: auto;
+	height: auto;
+
+}
+
+#gust p {
+	position:absolute;
+	left: 40%;
+	top: 73%;
+	max-width: 50%;
+	max-height: 25%;
+	width: auto;
+	height: auto;
+	font-size: 6.4vw; color:white ;font-family:Sans-serif,Arial,Helvetica;
+} 
+
+#slogan p {
+	display: none;
+}
+
+ #download img {
+	position:absolute;
+	left: 7%;
+	top: 82%;
+	max-width: 37%;
+	max-height: 37%;
+	width: auto;
+	height: auto;
+}
+
+#viewYouku img {
+
+	position:absolute;
+	left: 57%;
+	top: 82%;
+	max-width: 37%;
+	max-height: 37%;
+	width: auto;
+	height: auto;
+
+}
+
+#introducebg {
+	height: 0px;
+	display: none;
+}
 
 }
 
