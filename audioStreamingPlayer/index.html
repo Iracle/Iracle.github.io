@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="Iracle">
 <meta property="og:description" content="AVFoundation.framework 中的 AVAudioPlayer 虽然有完整的播放控制和多种音频格式的支持，但它仅仅能播放本地音乐。">
 <meta property="og:image" content="http://ac-wz05bqko.clouddn.com/efe9c76a40b3d191.png">
-<meta property="og:updated_time" content="2016-06-22T14:58:51.000Z">
+<meta property="og:updated_time" content="2016-06-22T15:00:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单的网络流媒体播放下载">
 <meta name="twitter:description" content="AVFoundation.framework 中的 AVAudioPlayer 虽然有完整的播放控制和多种音频格式的支持，但它仅仅能播放本地音乐。">
@@ -229,7 +229,7 @@
 
       
         <span itemprop="articleBody"><h3 id="简介">简介</h3><p><code>AVFoundation.framework</code> 中的 <code>AVAudioPlayer</code> 虽然有完整的播放控制和多种音频格式的支持，但它仅仅能播放本地音乐。对于网络流媒体是不提供支持的。那 iOS 中怎么实现播放网络流媒体呢？可以使用 <code>AudioToolbox.framework</code> 的音频队列服务 Audio Queue Services。至于原理，苹果有完整的文档和图例，请移步 <a href="https://developer.apple.com/library/mac/documentation/MusicAudio/Conceptual/AudioQueueProgrammingGuide/AboutAudioQueues/AboutAudioQueues.html#//apple_ref/doc/uid/TP40005343-CH5-SW1" target="_blank" rel="external">这里</a> 。当然就算你看明白原理了，也还有大量的工作要做，比如：控制播放状态，音频编码、解码，异常中断处理等等。所以要想完整的实现一个比较完整的网络流媒体播放器，是需要一定时间的。本文的目的不是这个，如果你对音频很有兴趣，这里顺便推荐一个博客 <a href="http://msching.github.io" target="_blank" rel="external">码农人生</a> ，讲了一些音频的基础知识。本文使用一个开源的框架 AFSoundManager 来实现网络流媒体的播放，AFSoundManager 是基于 AudioToolbox 和 AVFoundation 框架实现的网络流媒体播放库，同时也支持播放本地音乐和录音，可以去 AFSoundManager 的 <a href="https://github.com/AlvaroFranco/AFSoundManager" target="_blank" rel="external">Github 主页</a> 查看更多信息。</p>
-<p>###AFSoundManager<br>如果大家查看源码可以发现 AFSoundManager 库的实现非常简单，仅仅包含以下几个类。</p>
+<h3 id="AFSoundManager">AFSoundManager</h3><p>如果大家查看源码可以发现 AFSoundManager 库的实现非常简单，仅仅包含以下几个类。</p>
 <p>AFSoundManager.h<br>AFSoundPlayback.h<br>AFSoundPlayback.m<br>AFSoundItem.h<br>AFSoundItem.m<br>AFSoundQueue.h<br>AFSoundQueue.m<br>AFSoundRecord.h<br>AFSoundRecord.m<br>NSTimer+AFSoundManager.h<br>NSTimer+AFSoundManager.m</p>
 <p><code>AFSoundItem</code> 提供一些歌曲基本信息：歌名，专辑封面，艺术家，总时间以及当前播放时间等等。<code>AFSoundPlayback</code> 提供歌曲控制的方法：开始，暂停，快进等等。可以利用 <code>AFSoundQueue</code> 创建一个播放队列，播放多首歌，同事利用 Block 实时回调播放信息。 <code>AFSoundRecord</code> 是一个录音的帮助类。基本的使用也很简单：</p>
 <p>播放一首歌：</p>
