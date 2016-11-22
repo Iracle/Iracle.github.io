@@ -226,6 +226,54 @@ body {
 
 }
 
+#rao {
+	position:absolute;
+	background-color: #fffff8;
+    width: auto;
+    height: 250px;
+    top: 92.2%;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+#raoIcon {
+
+	position:absolute;
+	left: 15%;
+	float: center;
+	top: 30%;
+	max-width: 40%;
+	max-height: 40%;
+	width: auto;
+
+}
+
+#raoIntro {
+
+	position:absolute;
+	left: 37%;
+	top: 31%;
+	max-width: 50%;
+	max-height: 15%;
+	width: auto;
+	height: auto;
+	font-weight: lighter;
+    font-size: 2.0vw; color:rgba(39, 129, 255,0.68);font-family:Sans-serif,Arial,Helvetica;
+
+
+}
+
+#raodownload img {
+	position:absolute;
+	left: 45%;
+	top: 55%;
+	max-width: 14%;
+	max-height: 14%;
+	width: auto;
+	height: auto;
+}
+
 @media only screen and (max-width: 650px) {
 
 	#tab {
@@ -265,7 +313,7 @@ body {
 	width: auto;
 	height: auto;
 	font-size: 6.4vw; color:white ;font-family:Sans-serif,Arial,Helvetica;
-} 
+}
 
 #slogan p {
 	display: none;
@@ -296,6 +344,16 @@ body {
 #introducebg {
 	height: 0px;
 	display: none;
+}
+
+#rao {
+	position:absolute;
+    width: auto;
+    height: 100px;
+    top: 91%;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
 }
 
 }
