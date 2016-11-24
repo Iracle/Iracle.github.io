@@ -53,16 +53,17 @@
 
 
 
-<meta name="description" content="Objective-C 一向都不是一门优雅的语言，而且连优美都谈不上。过于啰嗦的方法签名，冗长的枚举，无所不在的 Delegate。">
+<meta name="description" content="前段时间突然对绕口令感兴趣，去 App Store 里找了一下，发现里面绕口令 APP 倒是不少，但是质量惨不忍睹">
 <meta property="og:type" content="article">
-<meta property="og:title" content="链式语法">
-<meta property="og:url" content="http://iracleme.com/chainSyntax/index.html">
+<meta property="og:title" content="Rao 的前世今生">
+<meta property="og:url" content="http://iracleme.com/raohelp/index.html">
 <meta property="og:site_name" content="Iracle">
-<meta property="og:description" content="Objective-C 一向都不是一门优雅的语言，而且连优美都谈不上。过于啰嗦的方法签名，冗长的枚举，无所不在的 Delegate。">
-<meta property="og:updated_time" content="2016-09-07T08:13:57.000Z">
+<meta property="og:description" content="前段时间突然对绕口令感兴趣，去 App Store 里找了一下，发现里面绕口令 APP 倒是不少，但是质量惨不忍睹">
+<meta property="og:image" content="http://ac-wz05bqko.clouddn.com/d63c85cbe8c34d33d053.png">
+<meta property="og:updated_time" content="2016-11-24T10:13:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="链式语法">
-<meta name="twitter:description" content="Objective-C 一向都不是一门优雅的语言，而且连优美都谈不上。过于啰嗦的方法签名，冗长的枚举，无所不在的 Delegate。">
+<meta name="twitter:title" content="Rao 的前世今生">
+<meta name="twitter:description" content="前段时间突然对绕口令感兴趣，去 App Store 里找了一下，发现里面绕口令 APP 倒是不少，但是质量惨不忍睹">
 
 
 
@@ -74,7 +75,7 @@
   };
 </script>
 
-  <title> 链式语法 | Iracle </title>
+  <title> Rao 的前世今生 | Iracle </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -194,7 +195,7 @@
             
             
               
-                链式语法
+                Rao 的前世今生
               
             
           </h1>
@@ -203,26 +204,11 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2016-09-03T14:23:11+08:00" content="2016-09-03">
-              2016-09-03
+            <time itemprop="dateCreated" datetime="2016-11-24T16:51:35+08:00" content="2016-11-24">
+              2016-11-24
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; In
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -242,19 +228,17 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="简介">简介</h3><p>Objective-C 一向都不是一门优雅的语言，而且连优美都谈不上。过于啰嗦的方法签名，冗长的枚举，无所不在的 Delegate ,以及反人类的 <code>[instance method]</code> 方法调用机制，让你的代码看上去一点都不美好。尤其是苹果推出 Swift 后，Swift 的现代化，简洁，优雅，并且支持多种编程范式的特性让开发者爱不释手。直到 Autolayout 布局框架 <a href="https://github.com/SnapKit/Masonry" target="_blank" rel="external">Masonry</a> 出现之后，大家才发现 Objective-C 也可如此优雅。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span><span class="variable">.growingButton</span> mas_updateConstraints:^(MASConstraintMaker *make) &#123;</span><br><span class="line">    make<span class="variable">.center</span><span class="variable">.equalTo</span>(<span class="keyword">self</span>);</span><br><span class="line">    make<span class="variable">.width</span><span class="variable">.equalTo</span>(@(<span class="keyword">self</span><span class="variable">.buttonSize</span><span class="variable">.width</span>))<span class="variable">.priorityLow</span>();</span><br><span class="line">    make<span class="variable">.height</span><span class="variable">.equalTo</span>(@(<span class="keyword">self</span><span class="variable">.buttonSize</span><span class="variable">.height</span>))<span class="variable">.priorityLow</span>();</span><br><span class="line">    make<span class="variable">.width</span><span class="variable">.lessThanOrEqualTo</span>(<span class="keyword">self</span>);</span><br><span class="line">    make<span class="variable">.height</span><span class="variable">.lessThanOrEqualTo</span>(<span class="keyword">self</span>);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>大家可以看到，使用如上链式语法约束一个控件是非常直观，便捷，优雅，尤其是相对于原生的 <code>NSLayoutConstraint</code> 类来说。由于使用链式语法涉及到属性的访问，block 的创建与执行，性能会有一点点影响，但几乎可以忽略不计。</p>
-<h3 id="Objective-C_实现">Objective-C 实现</h3><p>实现起来其实也不难，链式语法无非就是 <code>instance.method1().method2().method3()</code> 这种形式。核心思想是，定义一系列返回值是 block 的方法，而此 block 的返回值则是该类本身。具体实现可以参考一下 <a href="https://kangzubin.cn/objective-c-chainable-syntax/#more" target="_blank" rel="external">这篇博客</a> 。利用链式语法实现的一个计算器。<br>使用：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Calculator *aCalculator = [Calculator new];</span><br><span class="line">aCalculator<span class="variable">.add</span>(<span class="number">5</span>)<span class="variable">.add</span>(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>, aCalculator<span class="variable">.result</span>);</span><br><span class="line"><span class="comment">//result = 9</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，使用链式语法可以使计算过程变得很便捷，灵活。此外我们还可以加一点语法糖，让我们的计算器像  Masonry 使用 block 进行回调，避免每次都重复写实例化的代码。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"NSObject+Extra.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSObject</span> (<span class="title">Extra</span>)</span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">CGFloat</span>)makeCalculator:(<span class="keyword">void</span> (^)(Calculator *))block &#123;</span><br><span class="line">    Calculator *aCalcu = [[Calculator alloc] init];</span><br><span class="line">    block(aCalcu);</span><br><span class="line">    <span class="keyword">return</span> aCalcu<span class="variable">.result</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>现在我们可以这样使用：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSInteger</span> result = [<span class="built_in">NSString</span> makeCalculator:^(Calculator *can) &#123;</span><br><span class="line">    can<span class="variable">.add</span>(<span class="number">4</span>)<span class="variable">.multiply</span>(<span class="number">4</span>)<span class="variable">.and</span><span class="variable">.add</span>(<span class="number">2</span>);</span><br><span class="line">&#125;];</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>, result);</span><br><span class="line"><span class="comment">//result = 18</span></span><br></pre></td></tr></table></figure>
-<h3 id="Swift_实现">Swift 实现</h3><p>Masonry 有一个 Swift 版叫做：<a href="https://github.com/SnapKit/Masonry" target="_blank" rel="external">SnapKit</a> 。用法和 Masonry 几乎一样，都是链式语法。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">box<span class="variable">.snp_makeConstraints</span> &#123; make <span class="keyword">in</span></span><br><span class="line">   make<span class="variable">.width</span><span class="variable">.height</span><span class="variable">.equalTo</span>(<span class="number">50</span>)</span><br><span class="line">   make<span class="variable">.center</span><span class="variable">.equalTo</span>(<span class="keyword">self</span><span class="variable">.view</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Swift 和 Objective-C  不一样，Swift 是用 <code>.</code> 语法来调用方法的，可以看出在 Swift 中使用链式语法看上去要更加和谐。实现方法其实和在 Objective-C  是一样的，同样简单。具体可以看 <a href="http://www.jianshu.com/p/607a8caf74c8" target="_blank" rel="external">这篇博客</a> 来学习具体的实现方法，这里就不赘述了。</p>
-<h3 id="总结">总结</h3><p>关于链式语法的使用场景，Github 上也有一些把 <code>UIKit</code> 里的控件转换为链式语法的库，但是大都不太完善，不建议使用。不过可以在封装一些工具类时使用链式语法，增强扩展性与可读性，方便你的小伙伴调用。</p>
+        <span itemprop="articleBody"><p>前段时间突然对绕口令感兴趣，去 App Store 里找了一下，发现里面绕口令 APP 倒是不少，但是质量惨不忍睹，好多都是许久不更新的了，UI 设计还停留在上古世纪。实在选不出一个可以忍下心装到手机里面的，就萌生了自己写一个的想法。因为自己前面独自完成过 Gust Browser 所以对个人项目还是很轻车熟路。于是趁热打铁，定下了产品的风格。</p>
+<ul>
+<li>使用本地数据库，无需联网</li>
+<li>绕口令有不同的难度等级</li>
+<li>设计简洁优雅，交互自然</li>
+<li>swift 2.3</li>
+</ul>
+<p>然后用 Sketch 画了基本的原型图：</p>
+<div align="center"><br><img src="http://ac-wz05bqko.clouddn.com/d63c85cbe8c34d33d053.png" width="500"><br></div>
+
+<p>原型有了，可以开始编码了。绕口令的数据库是淘宝买的，要相信淘宝什么都买的到。用的原生 SQlite 来操作数据库，数据持久化层则用的是 RealmSwift 。Autolayout 选择 Snapkit ，最后使用了 storehouse 开源的动画库 <a href="https://github.com/storehouse/Advance" target="_blank" rel="external">Advance</a> , Advance 是一个纯 Swift 库，和 Core Animation 和 pop 相比，Advance 提供了强大的 API 用于创建可交互式的动画。由于是个人项目，没有进度上面的要求，所以就慢慢写。写到一半，还用 RxSwift 重构了一次，随着对 RxSwift 的深入，感觉由于它对 Cocoa 框架的支持不全，对于需求复杂的产品，还是不能统一代码风格，反而会增加复杂度，遂弃之。期间苹果发布了 Swift 3.0 ，所以只得老老实实的迁移到 3.0😓。断断续续的写了三个月，终于在十一月提交审核，结果两天就通过了，苹果审核的效率什么时候变的这么高了。遥想今年四月份提交 Gust Browser 的时候被拒了一次，等了十多天才上架，那种不爽啊。由于这个 APP 很简单，本来想免费的，但想到自己没那么多精力做客服，就定了一个价，筛选掉大部分用户，只给真正需要的人。<br><br><br><br><br>恩，没什么想说的了。</p>
 </span>
       
     </div>
@@ -266,17 +250,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/gusthelp/" rel="next" title="Gust Browser 使用帮助">
-                <i class="fa fa-chevron-left"></i> Gust Browser 使用帮助
+              <a href="/chainSyntax/" rel="next" title="链式语法">
+                <i class="fa fa-chevron-left"></i> 链式语法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/raohelp/" rel="prev" title="Rao 的前世今生">
-                Rao 的前世今生 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
